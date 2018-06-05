@@ -15,18 +15,10 @@ cc.Class({
     },
 
     start: function () {
+        cc.socket.emit('welcome', 'connect');
         cc.socket.on('welcome', function (data) {
-            cc.log("data = " + data);
+            cc.log("连网成功");
+            cc.director.loadScene('loading');
         })
     },
-
-    clickLogin: function (eve, custom) {
-        var data = {
-            "pid": "12345678",
-            "name": this.namelabel.string,
-            "password": this.passwordlabel.string,
-        }
-        data = JSON.stringify(data);
-        cc.socket.emit(CmdCode.code.login, data);
-    }
 });

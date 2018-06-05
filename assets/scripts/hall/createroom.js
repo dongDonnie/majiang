@@ -28,6 +28,11 @@ cc.Class({
         cc.log(this.roomrule);
     },
 
+    clickCreate: function () {
+        var data = JSON.stringify(this.roomrule);
+        cc.socket.emit('createroom', data);
+    },
+
     quit: function () { 
         this.node.destroy(true);
     },
